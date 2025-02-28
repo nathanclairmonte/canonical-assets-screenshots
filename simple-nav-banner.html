@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://assets.ubuntu.com/v1/vanilla-framework-version-4.20.0.min.css" />
+    <title>Canonical Navigation Banner</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      
+      /* Hide everything except the navigation banner when taking screenshot */
+      .screenshot-container {
+        width: 100%;
+        border: 2px dashed #ddd;
+        margin: 20px 0;
+        padding: 20px;
+      }
+      
+      .instructions {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #f7f7f7;
+        border-radius: 5px;
+        font-family: 'Ubuntu', sans-serif;
+      }
+
+      .line-number {
+        color: #999;
+        width: 3em;
+        text-align: right;
+        margin-right: 1em;
+        user-select: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="instructions">
+      <h2>Canonical Navigation Banner</h2>
+      <p>A very simple example of the Canonical Navigation Banner to facilitate screenshots of it.</p>
+    </div>
+    
+    <div class="screenshot-container">
+      <header id="navigation" class="p-navigation is-dark">
+        <div class="p-navigation__row--25-75">
+          <div class="p-navigation__banner">
+            <div class="p-navigation__tagged-logo">
+              <a class="p-navigation__link" href="#">
+                <div class="p-navigation__logo-tag">
+                  <img
+                    class="p-navigation__logo-icon"
+                    src="https://assets.ubuntu.com/v1/82818827-CoF_white.svg"
+                    alt=""
+                  >
+                </div>
+                <span class="p-navigation__logo-title">
+                  &nbsp;Your Text Here
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </header>
+    </div>
+    
+    <div class="instructions">
+      <h3>Instructions:</h3>
+      <ol>
+        <li>Edit the "Your Text Here" text to your liking:</li>
+        <br />
+        <pre><code><span class="line-number">60</span>&lt;span class="p-navigation__logo-title"&gt;
+<span class="line-number">61</span>&nbsp;&nbsp;&amp;nbsp;Your Text Here
+<span class="line-number">62</span>&lt;/span&gt;</code></pre>
+        <li>Take a screenshot of just the navigation bar inside the dashed border</li>
+        <li>Crop the image if needed to include only the dark navigation bar</li>
+        <li>Use the image wherever you'd like!</li>
+      </ol>
+    </div>
+  </body>
+</html>
