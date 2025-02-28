@@ -4,10 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://assets.ubuntu.com/v1/vanilla-framework-version-4.20.0.min.css" />
-    <!-- Prism for syntax highlighting + line numbers -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/themes/prism.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/plugins/line-numbers/prism-line-numbers.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/themes/prism-okaidia.min.css" />
     <title>Canonical Navigation Banner</title>
     <style>
       body {
@@ -29,17 +25,6 @@
         background-color: #f7f7f7;
         border-radius: 5px;
       }
-      
-      /* Override some Prism styles */
-      pre[class*="language-"] {
-        margin: 1em 0;
-        padding: 1em 4em;
-        border-radius: 4px;
-      }
-      
-      code[class*="language-"] {
-        font-size: 14px;
-      }
     </style>
   </head>
 
@@ -57,7 +42,7 @@
                     alt=""
                   >
                 </div>
-                <span class="p-navigation__logo-title">
+                <span class="p-navigation__logo-title" id="navText">
                   &nbsp;Your Text Here
                 </span>
               </a>
@@ -67,24 +52,71 @@
       </header>
     </div>
 
+    <div class="p-card--highlighted">
+      <h4>Edit Banner Text</h4>
+      <form class="p-card__content">
+        <div class="p-form__group">
+          <input type="text" id="navTextInput" class="p-form__control" placeholder="E.g. Canonical | Careers">
+        </div>
+        <div class="p-form__group">
+          <button type="button" class="p-button--positive" id="updateBtn">Update Text</button>
+          <button type="button" class="p-button" id="resetBtn">Reset</button>
+        </div>
+      </form>
+    </div>
+
     <div class="instructions">
       <h1>Canonical Navigation Banner</h1>
-      <p>A very simple example of the Canonical Navigation Banner to facilitate screenshots of it.</p>
+      <p>A simple example of the Canonical Navigation Banner to facilitate screenshots of it.</p>
       <h3>Instructions:</h3>
       <ol>
-        <li>Edit the banner text in the <code>simple-nav-banner.html</code> file to your liking:</li>
-        <pre class="line-numbers" data-start="60"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>p-navigation__logo-title<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
-  <span class="token entity named-entity" title="non-breaking space">&amp;nbsp;</span>Your Text Here
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span></code></pre>
-        <li>Save the file and refresh this page</li>
+        <li>Enter your desired text in the input box above</li>
+        <li>Click "Update Text" to change the navigation text</li>
         <li>Take a screenshot of just the navigation bar inside the dashed border</li>
-        <li>Crop the image if needed and use wherever you'd like!</li>
         <li><b>N.B.</b> You can also change the width of the banner by resizing your browser window</li>
       </ol>
     </div>
-
-    <!-- Prism JS syntax highlighting + line numbers -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/prism.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    
+    <!-- Script to update banner text -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Get references to the elements
+        const navText = document.getElementById('navText');
+        const navTextInput = document.getElementById('navTextInput');
+        const updateBtn = document.getElementById('updateBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        
+        // Default text value
+        const defaultText = 'Your Text Here';
+        
+        // Update button click handler
+        updateBtn.addEventListener('click', function() {
+          // Don't update if empty
+          if (navTextInput.value.trim() === '') {
+            return;
+          }
+          
+          // Update the navigation text
+          navText.innerHTML = '&nbsp;' + navTextInput.value;
+        });
+        
+        // Reset button click handler
+        resetBtn.addEventListener('click', function() {
+          // Clear the input field
+          navTextInput.value = '';
+          
+          // Reset banner to default text
+          navText.innerHTML = '&nbsp;' + defaultText;
+        });
+        
+        // Update text when pressing Enter in the input field
+        navTextInput.addEventListener('keypress', function(e) {
+          if (e.key === 'Enter') {
+            e.preventDefault(); // Prevent form submission
+            updateBtn.click();
+          }
+        });
+      });
+    </script>
   </body>
 </html>
